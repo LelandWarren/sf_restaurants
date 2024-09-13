@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get "restaurants/show"
 
   resources :restaurants, only: [:index, :show] do
-    resources :inspections, only: [:index, :show]
+    resources :inspections, only: [:index, :show] do
+      resources :violations, only: [:index, :show, :create]
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
