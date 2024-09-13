@@ -13,8 +13,8 @@
 ActiveRecord::Schema[7.2].define(version: 2024_09_13_032042) do
   create_table "inspections", force: :cascade do |t|
     t.integer "restaurant_id", null: false
-    t.date "inspection_date"
     t.integer "score"
+    t.date "inspection_date"
     t.string "inspection_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,16 +24,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_13_032042) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.string "city"
+    t.string "postal_code"
     t.string "phone_number"
+    t.string "owner_name"
+    t.string "owner_address"
+    t.string "owner_city"
+    t.string "owner_state"
+    t.string "owner_zip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "violations", force: :cascade do |t|
     t.integer "inspection_id", null: false
-    t.string "violation_code"
+    t.date "violation_date"
+    t.string "violation_type"
+    t.string "risk_category"
     t.text "description"
-    t.string "severity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["inspection_id"], name: "index_violations_on_inspection_id"
